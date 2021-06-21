@@ -27,29 +27,29 @@ with open(rutaout, 'w', newline='') as csvfile:
 		print("\nVamos por el sitio: " + str(c) + " de: " + str(len(sitios)))
 		headers = subprocess.getoutput("curl -s -I"+" "+ r).lower()
 		if headers.__contains__("strict-transport-security"):
-			resultado.append("True") 
+					resultado.append("True") 
 		else:
-			resultado.append("Se identificó qué en el sitio: " + r + ", no cuenta con la cabecera Strict-Transport-Security. Esta cabecera indica al navegador que el sitio web solo debe de cargarse en HTTPS.")
+			resultado.append("Se identifico que en el sitio: " + r + ", no cuenta con la cabecera Strict-Transport-Security. Esta cabecera indica al navegador que el sitio web solo debe de cargarse en HTTPS.")
 		if headers.__contains__("content-security-policy"):
 			resultado.append("True")
 		else:
-			resultado.append("Se identificó qué el sitio: " + r + ", no cuenta con la cabecera Content-Security-Policy. Esta cabecera es una medida efectiva de protección del sitio ante ataques XSS.")
+			resultado.append("Se identifico que el sitio: " + r + ", no cuenta con la cabecera Content-Security-Policy. Esta cabecera es una medida efectiva de proteccion del sitio ante ataques XSS.")
 		if headers.__contains__("x-frame-options"):
 			resultado.append("True")
 		else:
-			resultado.append("Se identificó qué en el sitio: " + r + ",es vulnerable a Clickjacking lo que permite agregarla dentro de un sitio externo controlado por una persona malintencionada, pudiendo engañar así a los usuarios haciendo uso de prácticas de Ingeniería social.")
+			resultado.append("Se identifico que en el sitio: " + r + ",es vulnerable a Clickjacking lo que permite agregarla dentro de un sitio externo controlado por una persona malintencionada, pudiendo engañar asi a los usuarios haciendo uso de practicas de Ingenieria social.")
 		if headers.__contains__("x-content-type-options"):
 			resultado.append("True")
 		else:
-			resultado.append("Se identificó qué el sitio: " + r + ", no cuenta con la cabecera X-Content-Type-Options. Esta cabecera permite evitar ataques basados en la confusión del tipo de MIME, debido a que si el navegador recibe esta cabecera no intentará interpretar el tipo de MIME en ningún caso y utilizará el indicado en el Content-Type.")
+			resultado.append("Se identifico que el sitio: " + r + ", no cuenta con la cabecera X-Content-Type-Options. Esta cabecera permite evitar ataques basados en la confusion del tipo de MIME, debido a que si el navegador recibe esta cabecera no intentara interpretar el tipo de MIME en ningun caso y utilizara el indicado en el Content-Type.")
 		if headers.__contains__("referrer-policy"):
 			resultado.append("True")
 		else:
-			resultado.append("Se identificó qué el sitio: " + r + ", no cuenta con la cabecera Referrer-Policy. Esta cabecera permite controlar que información se envía en la cabecera Referer cuál es utilizada por el navegador para indicarle al servidor desde que enlace se ha llegado a la página.")
+			resultado.append("Se identifico que el sitio: " + r + ", no cuenta con la cabecera Referrer-Policy. Esta cabecera permite controlar que informacion se envia en la cabecera Referer cual es utilizada por el navegador para indicarle al servidor desde que enlace se ha llegado a la pagina.")
 		if headers.__contains__("permissions-policy"):
 			resultado.append("True")
 		else:
-			resultado.append("Se identificó qué el sitio: " + r + ", no cuenta con la cabecera Permissions-Policy. Esta cabecera permite a un sitio controlar que funciones y API's   se pueden usar en el navegador.")
+			resultado.append("Se identifico que el sitio: " + r + ", no cuenta con la cabecera Permissions-Policy. Esta cabecera permite a un sitio controlar que funciones y API's   se pueden usar en el navegador.")
 
 
 		resultado.append(correlativo + "-" + str(c) + '.png')
